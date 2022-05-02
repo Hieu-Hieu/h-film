@@ -1,0 +1,90 @@
+@use '../../scss/index' as *;
+
+.logo{
+    a{
+        @include flex(center,unset);
+        font-size: 2rem;
+        height: $header-height;
+        font-weight: 600;
+        color: #fff;
+        &:hover{
+            cursor: pointer;
+            color: $main-color;
+        }
+    }
+    img{
+        margin-right: 10px;
+        width: 40px;
+        @include mobile {
+            width: 30px;
+            margin-right: 0;
+        }
+    }
+}
+
+.header{
+    height: $header-height;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    &__wrap{
+        @include flex(center,space-between);
+    }
+
+    &__nav{
+        @include flex(center,space-between);
+        li{
+            margin-right: 26px;
+            padding-bottom: 4px;
+            position: relative;
+            &:after{
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 2px;
+                background-color: $main-color;
+                transition: width 0.3s linear;
+            }
+            &.active::after,
+            &:hover::after{
+                width: 100%;
+            }
+        }
+        a{
+            color: $text-color;
+            font-size: 20px;
+            &:hover{
+                color: $main-color;
+            }
+        }
+    }
+    &__search{
+        position: relative;
+        &-input{
+            font-size: 14px;
+            outline: none;
+            border: none;
+            border-radius: 4px;
+            height: 22px;
+            padding: 4px 34px 4px 6px;
+        }
+        &-btn{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 3px;
+            height:25px;
+            border: none;
+            background-color: transparent;
+            color: $main-color;
+            font-size: 24px;
+        }
+    }
+}
